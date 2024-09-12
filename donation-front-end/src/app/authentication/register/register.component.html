@@ -1,1 +1,66 @@
-<p>register works!</p>
+<div class="form-container">
+  <mat-card>
+    <mat-card-title>Register</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label for="name">User Name</mat-label>
+          <input matInput id="name" type="text" formControlName="username" placeholder="Enter Username">
+          <mat-error *ngIf="registerForm.get('name')?.hasError('required')">
+            Name is required.
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label for="pwd">Password</mat-label>
+          <input matInput id="pwd" [type]="passwordFieldType" formControlName="password" placeholder="Enter Password">
+          <mat-error *ngIf="registerForm.get('password')?.hasError('required')">
+            Password is required.
+          </mat-error>
+          <mat-error *ngIf="registerForm.get('password')?.hasError('minlength')">
+            Password must be at least 6 characters long.
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Confirm Password</mat-label>
+          <input matInput [type]="passwordFieldType" formControlName="confirmPassword" />
+          <mat-error *ngIf="registerForm.hasError('passwordMismatch')">
+            Passwords must match.
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label for="email">email</mat-label>
+          <input matInput id="email" type="text" formControlName="email" placeholder="Enter Email">
+          <mat-error *ngIf="registerForm.get('email')?.hasError('required')">
+            Email is required.
+          </mat-error>
+          <mat-error *ngIf="registerForm.get('email')?.hasError('email')">
+            Enter a valid email address.
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Role</mat-label>
+          <mat-select formControlName="role">
+            <mat-option value="buyer">Buyer</mat-option>
+            <mat-option value="seller">Seller</mat-option>
+          </mat-select>
+          <mat-error *ngIf="registerForm.get('role')?.hasError('required')">
+            Role is required for sellers.
+          </mat-error>
+        </mat-form-field>
+
+
+
+        <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid"
+          (click)="togglePasswordVisibility()">
+
+          Submit</button>
+      </form>
+      <p class="sign-in-link">
+        Already have an account?
+        <a routerLink="/login">Sign In</a>
+      </p>
+    </mat-card-content>
+
+  </mat-card>
+
+</div>

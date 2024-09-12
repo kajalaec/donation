@@ -1,30 +1,34 @@
-.form-group {
-    margin-bottom: 16px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-  }
-  
-  input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  button {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-  }
-  
-  button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
+.form-container {
+  margin-top: 16px;
+  max-width: 400px;
+  /* Fixed width for the container */
+  margin: 0 auto;
+  /* Center the container horizontally */
+  padding: 16px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  /*  Add a subtle shadow */
+  border-radius: 8px;
+  /*  Rounded corners */
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+mat-card {
+  padding: 24px;
+}
+
+mat-card-title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+}
